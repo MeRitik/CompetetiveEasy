@@ -1,0 +1,17 @@
+void lexico(int x, int n)
+{
+	if(x>n)return;
+	if(x == n){
+		cout << x << endl;
+		return;
+	}
+
+	if(x != 0){
+		cout << x << endl;
+	}
+
+	for(int i = (x == 0)?1:0; i <=9; i++)
+	{
+		lexico(10*x+i, n);
+	}
+}

@@ -1,0 +1,45 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+void print(char str[])
+{
+    cout << str;
+}
+
+void PassorNot()
+{
+    int N,M,X,Y;
+    cin>>N>>M>>X>>Y;
+
+    string grades;
+
+    while(N--)
+    {
+        cin>>grades;
+        int full = count(grades.begin(),grades.end(), 'F');
+        int partial = count(grades.begin(),grades.end(), 'P');
+
+        if(full >= X)
+            cout << '1';
+        else if((full >= (X-1)) && (partial >= Y))
+            cout << '1';
+        else
+            cout << '0';
+    }
+    cout << endl;
+}
+
+
+int main()
+{
+    int T;
+    cin>>T;
+
+    while(T--)
+    {
+        PassorNot();
+    }
+
+    return 0;
+}

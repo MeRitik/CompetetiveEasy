@@ -1,0 +1,166 @@
+1.
+
+//3SUM 
+
+#include<iostream>
+using namespace std;
+
+bool check(int a[],int sum,int as)
+{
+    for(int i=0;i<as-2;i++)
+    {
+        for(int j=i+1;j<as-1;j++)
+        {
+            for(int k=j+1;j<as;j++)
+            {
+                if(a[i] + a[j] + a[k] ==sum)
+                {
+                    cout << "Numbers are : " << a[i] << ", " << a[j] << ", " << a[k];
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+int main()
+{
+    int a[5] = {5,7,9,3,11};
+    int as = sizeof(a) / sizeof(a[0]);
+    int sum = 25;
+    check(a,sum,as);
+
+    return 0;
+}
+
+----------------------------------------------------------------------------------------------------
+2.
+
+//Find Union and Intersection of 2 given arrays
+
+#include<iostream>
+#include<conio.h>
+using namespace std;
+
+void unions(int a[],int b[],int len1,int len2)
+{
+     int i = 0;
+    int j = 0;
+    while(i<len1 && j<len2)
+    {
+        if(a[i]>b[j])
+        {
+            cout << b[j++] << " ";
+        }
+        else if(a[i]<b[j])
+        {
+            cout << a[i++] << " ";
+        }
+        else
+        {
+            cout << a[i++] << " ";
+            j++;
+        }
+    }
+    while(i<len1)
+        cout << a[i++] << " ";
+    while(j<len2)
+        cout << b[j++] << " ";
+}
+void intersect(int x[],int y[],int l1,int l2)
+{
+    int i = 0;
+    int j = 0;
+    while(i<l1 && j<l2)
+    {
+        if(x[i]<y[j])
+            i++;
+        else if(x[i]>y[j])
+            j++;
+        else{
+            cout << x[i++] << " ";
+            j++;
+    }
+    }
+}
+int main()
+{
+    int a[] = {1,3,5,7,9,11,13};
+    int b[] = {2,4,6,8,10,11};
+    int len1 = sizeof(a)/sizeof(a[0]);
+    int len2 = sizeof(b)/sizeof(b[0]);
+    //cout << len1 << "\t" << len2 << " " ;
+    unions(a,b,len1,len2);
+    cout << endl;
+    intersect(a,b,len1,len2);
+
+
+    return 0;
+}
+
+
+-----------------------------------------------------------------------------------------------
+3.Find The missing number
+
+
+#include<iostream>
+using namespace std;
+
+int missing(int a[],int s)//Using XOR Operator
+{
+    int b =1,c = 1;
+    for(int i=0;i<=s+1;i++)
+    {
+        b = b^i;
+    }
+    for(int j=0;j<s;j++)
+    {
+        c = c^a[j];
+    }
+    return (b^c);
+}
+int missing2(int a[],int s)//Using Summation
+{
+    int sum = (s+1)*(s+2)/2;
+    for(int i=0;i<s;i++)
+    {
+        sum-=a[i];
+    }
+    return sum;
+}
+int main()
+{
+    int a[] = {3,5,1,2,4,9,8,6};//size = n || n+1=10
+
+    int n = sizeof(a)/sizeof(a[0]);
+
+    cout << missing(a,n) << endl;
+    cout << missing2(a,n);
+
+
+    return 0;
+}
+------------------------------------------------------------------------------------------------
+4.Tower of Hanoi
+
+#include<iostream>
+using namespace std;
+
+void toh(int n,char src,char dest,char aux)
+{
+    while(n>=1)
+    {
+        toh(n-1,src,aux,dest);
+        cout << "Move Disc " << n << " from " << src << " to " << dest << endl;
+        toh(n-1,aux,dest,src);
+        break;
+    }
+}
+int main()
+{
+    int n = 4;
+    toh(n,'A', 'C', 'B');
+    return 0;
+}
+
+-----------------------------------------------------------------------------------------------------

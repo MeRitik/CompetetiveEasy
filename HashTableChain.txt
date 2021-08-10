@@ -1,0 +1,76 @@
+#include<list>
+#include <iostream>
+using namespace std;
+
+class Hashing
+{
+    int BUCKET;
+    list<int> *arr;
+
+    public:
+        Hashing(int n)
+        {
+            this->BUCKET = n;
+            arr = new list<int>[BUCKET];
+        }
+
+        void Insert(int val)
+        {
+            int index = hashKey(val);
+            arr[index].push_back(val);
+        }
+
+        int hashKey(int val)
+        {
+            return val % BUCKET;
+        }
+
+        void printTable()
+        {
+            for(int i = 0; i < BUCKET; i++)
+            {
+                cout << i;
+                for(auto x : arr[i])
+                    cout << " -> " << x;
+                cout << endl;
+            }
+        }
+
+        void deleteElement(int val)
+        {
+            int index = hashKey(val);
+            list<int>::iterator it;
+
+            for(it = arr[index].begin(); it != arr[index].end();it++)
+            {
+                if(*it == val)
+                    break;
+            }
+            if(it != arr[index].end())
+                arr[index].erase(it);
+        }
+};
+
+int main()
+{
+    int n;
+    cout << "enter size of hash table: ";
+    cin>>n;
+
+    Hashing h(n);
+    int arr[] = {1, 12, 23, 34, 45, 56, 67, 78, 89, 54, 32};
+
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    for(int i = 0; i < len; i++)
+    {
+        h.Insert(arr[i]);
+    }
+
+    h.printTable();
+    cout << "\n\n";
+    h.deleteElement(23);
+    h.printTable();
+
+	return 0;
+}

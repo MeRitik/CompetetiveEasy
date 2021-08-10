@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+int main()
+{
+    string str;
+    int hh;
+    cin>>hh>>str;
+
+    if(str[6]=='P')
+    {
+        if(hh==12)
+        {
+            cout << hh;
+        }
+        else {
+        hh+=12;
+        cout << hh;
+        }
+    }
+    else //AM Condition
+    {
+        if(hh==12)
+        {
+            cout << "00";
+        }
+        else{
+            cout << '0' << hh;
+        }
+    }
+    str.erase(6);
+    cout << str;
+
+    return 0;
+}

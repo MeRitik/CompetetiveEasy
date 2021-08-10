@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+const float pr = 0.00001;
+
+void Normal(float x)
+{
+	int steps = 0;
+
+		float diff = 0.00001;
+		float i = 0;
+   	 	while((i*i)<x)
+    	{
+    	  steps++;
+      	  i = i+0.00001;
+    	}
+		cout << "Square root using normal method: " << i << " and Steps: " << steps << endl;
+}
+
+void NewtonRaphson(float x)
+{
+	float t = 1, steps;
+	for(steps = 1; steps < 20; steps++)
+	{
+		t = (t+x/t)/2;
+		/*if((x-t)<=pr)break;*/
+	}
+	cout << "Square root using Newton-Raphson Method is: " << t  << endl;
+}
+
+int main(){
+	#ifndef ONLINE_JUDGE
+	freopen("inputf.in", "r", stdin);
+	freopen("solution.in", "w", stdout);
+	#endif
+
+	int T;
+	cin>>T;
+	while(T--)
+	{
+		float x;
+		cin>>x;
+		NewtonRaphson(x);
+		
+	}
+	
+	return 0;
+}
