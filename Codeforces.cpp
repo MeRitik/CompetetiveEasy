@@ -1,20 +1,25 @@
-#include<iostream>
-#include<algorithm>
-#include<string>
+#include <iostream>
+#include <algorithm>
+#include <cmath>
 using namespace std;
 
 int main()
 {
-    #ifndef ONLINE_JUDGE
-        freopen("inputf.in", "r", stdin);
-        freopen("checker.in", "w", stdout);
-    #endif
+#ifndef ONLINE_JUDGE
+    freopen("inputf.in", "r", stdin);
+    freopen("checker.in", "w", stdout);
+#endif
 
-    for(int i = 0; i < 34; i++){
-        for(int j = 0; j < 87; j++)
-            cout << 1 << ' ';
-        cout << endl;
+    int q, a, b, c, ans = 0;
+    cin >> q;
+    while (q--) {
+        cin >> a >> b >> c;
+        ans += (a + b + c);
     }
+    if (ans == 0)
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
 
     return 0;
 }
